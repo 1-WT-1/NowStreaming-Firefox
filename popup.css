@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'NS-Thead';
-    src: url('ADAM.CG PRO.otf');
+  font-family: 'NS-Thead';
+  src: url('ADAM.CG PRO.otf');
 }
 
 .light-theme {
@@ -30,6 +30,7 @@
   --twitch: #6441a5;
   --warning: #CC2929;
 }
+
 .dark-theme {
   --accept: #29CC29;
   --body-background: #2D2D2D;
@@ -71,20 +72,22 @@
 }
 
 .tooltip {
-  display:none;
-  position:absolute;
-  border:1px solid var(--tooltip-border);
-  background-color:var(--tooltip-background);
-  border-radius:5px;
-  padding:10px;
-  color:var(--tooltip-text);
-  font-size:12px;
+  display: none;
+  position: absolute;
+  border: 1px solid var(--tooltip-border);
+  background-color: var(--tooltip-background);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--tooltip-text);
+  font-size: 12px;
 }
 
 
-input, textarea{
+input,
+textarea {
   background-color: var(--input-background);
 }
+
 input[type="text"] {
   font-size: 8px;
   font-weight: lighter;
@@ -99,34 +102,41 @@ input[type="text"] {
   box-shadow: none;
   border-radius: none;
 }
+
 input[type="text"]:focus {
   outline: none;
 }
+
 input[type="text"] {
   padding: 4px;
   border: solid 1px var(--input-border);
   transition: box-shadow 0.3s, border 0.3s;
 }
+
 input[type="text"]:focus,
 input[type="text"].focus {
   border: solid 1px var(--input-border-focus);
   box-shadow: 0 0 5px 1px var(--input-shadow-focus);
 }
+
 textarea[type="text"]:focus {
   outline: none;
 }
+
 textarea[type="text"] {
   padding: 4px;
   border: solid 1px var(--input-border);
   transition: box-shadow 0.3s, border 0.3s;
 }
+
 textarea[type="text"]:focus,
 textarea[type="text"].focus {
   border: solid 1px var(--input-border-focus);
   box-shadow: 0 0 5px 1px var(--input-shadow-focus);
 }
+
 #loadingStreams,
-#loadingFollowing{
+#loadingFollowing {
   text-align: center !important;
 }
 
@@ -148,6 +158,7 @@ body {
 body .tabs {
   display: flex;
 }
+
 body .tabs .heart {
   display: flex;
   border-bottom: 1px solid var(--body-border);
@@ -155,12 +166,15 @@ body .tabs .heart {
   font-size: 125%;
   align-items: center;
 }
+
 body .tabs .heart .unfollow-button:hover {
   color: var(--warning);
 }
+
 body .tabs .heart .follow-button:hover {
   color: var(--accept);
 }
+
 body .tabs .tab {
   display: flex;
   flex-grow: 1;
@@ -173,14 +187,17 @@ body .tabs .tab {
   font-weight: bold;
   background-color: var(--tab-background);
 }
-body .tabs .selected-tab{
+
+body .tabs .selected-tab {
   background-color: var(--tab-background-selected);
   border-bottom: none;
   color: var(--selection);
 }
+
 body .tabs :hover {
   cursor: pointer;
 }
+
 body .tabs .tab .tab-icon {
   font-size: 100%;
   padding-right: 4px;
@@ -192,6 +209,7 @@ body .streamersDiv {
   overflow: auto;
   max-height: 380px;
 }
+
 body .streamersDiv .noStreams {
   display: grid;
   height: 100%;
@@ -199,6 +217,7 @@ body .streamersDiv .noStreams {
   align-content: center;
   text-align: center;
 }
+
 body .streamersDiv .loadingStreams {
   display: grid;
   height: 100%;
@@ -206,12 +225,14 @@ body .streamersDiv .loadingStreams {
   align-content: center;
   text-align: center;
 }
+
 body .streamersDiv .streamersTableDiv .streamersTable {
-  overflow:auto;
-  max-height:450px;
+  overflow: auto;
+  max-height: 450px;
   width: 100%;
   border-top: none;
 }
+
 body .streamersDiv .streamersTableDiv .streamersTable thead {
   background-color: var(--table-header);
   color: var(--table-header-text);
@@ -219,23 +240,40 @@ body .streamersDiv .streamersTableDiv .streamersTable thead {
   font-size: 12px;
   font-weight: 500;
 }
+
 body .streamersDiv .streamersTableDiv .streamersTable thead tr th {
   cursor: pointer;
 }
+
 body .streamersDiv .streamersTableDiv .streamersTable tbody .list-row {
   text-transform: capitalize;
   text-decoration: none;
 }
+
 body .streamersDiv .streamersTableDiv .streamersTable tbody .list-row i {
   padding-right: 8px;
   color: var(--popout-icon);
 }
+
 body .streamersDiv .streamersTableDiv .streamersTable tbody .list-row i:hover {
   cursor: pointer;
 }
+
 body .streamersDiv .streamersTableDiv .streamersTable tbody .list-row a {
   color: var(--stream-name);
   text-decoration: none;
+  font-weight: 500;
+}
+
+body .streamersDiv .streamersTableDiv .streamersTable tbody .list-row .stream-title {
+  font-size: 9px;
+  color: var(--stream-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
+  display: block;
+  font-weight: normal;
 }
 
 
@@ -248,16 +286,20 @@ body .fastFollow {
   padding: 16px;
   text-decoration: none;
 }
+
 body .fastFollow input {
   width: 240px;
 }
+
 body .fastFollow input::placeholder {
   font-style: italic;
   color: black;
 }
+
 body .fastFollow i {
   line-height: 20px;
 }
+
 body .fastFollow i:hover {
   color: var(--accept);
   cursor: pointer;
@@ -272,19 +314,24 @@ body .fast-follow-message {
 .no-following {
   display: grid;
 }
+
 .no-following .no-following-instructions {
   padding-left: 30px;
 }
+
 .no-token {
   display: grid;
 }
+
 .no-token .no-token-instructions {
   padding-left: 40px;
 }
-.no-token button:hover{
+
+.no-token button:hover {
   color: var(--twitch);
 }
-.no-token button{
+
+.no-token button {
   justify-self: center;
   height: 35px;
   width: 200px;
@@ -294,16 +341,18 @@ body .fast-follow-message {
   color: var(--text-color);
 }
 
-#followingTable{
+#followingTable {
   width: 100%;
   text-transform: capitalize;
   font-weight: bold;
 }
-#followingTable a:not(.unfollowstreamer){
+
+#followingTable a:not(.unfollowstreamer) {
   color: var(--stream-name);
-  float:left;
+  float: left;
 }
-#followingTable a{
+
+#followingTable a {
   color: var(--warning);
   text-decoration: none;
 }
@@ -316,12 +365,14 @@ body .fast-follow-message {
   display: grid;
   padding: 16px;
 }
+
 .optionsDiv .management-area {
   display: grid;
   grid-template-columns: 1fr 1fr min-content;
   grid-gap: 12px;
   padding-bottom: 8px;
 }
+
 .optionsDiv .management-area .notifications {
   display: grid;
   grid-template-columns: min-content 1fr;
@@ -330,29 +381,75 @@ body .fast-follow-message {
   align-content: center;
   justify-self: center;
 }
+
 .optionsDiv .management-area .notifications:hover {
   color: var(--selection);
 }
-.optionsDiv .management-area .follow-list{
+
+.optionsDiv .management-area .follow-list {
   display: grid;
   grid-template-columns: min-content 1fr;
   grid-gap: 8px;
   justify-self: center;
 }
-.optionsDiv .management-area .follow-list:hover{
+
+.optionsDiv .management-area .follow-list:hover {
   cursor: pointer;
   color: var(--selection);
 }
-.optionsDiv .management-area .theme-area{
+
+.optionsDiv .management-area .theme-area {
   display: flex;
   cursor: pointer;
 }
+
 .optionsDiv .management-area .theme-area:hover {
   color: var(--selection);
 }
-.optionsDiv .management-area .theme-area .theme-button{
+
+.optionsDiv .management-area .theme-area .theme-button {
   padding-right: 4px;
 }
+
+.optionsDiv .sgdb-area {
+  display: grid;
+  grid-gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--import-border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.optionsDiv .sgdb-area .sgdb-input-group {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-gap: 8px;
+}
+
+.optionsDiv .sgdb-area .sgdb-input-group input {
+  width: 100%;
+}
+
+.optionsDiv .sgdb-area button {
+  height: 28px;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--import-border);
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.optionsDiv .sgdb-area button:hover {
+  color: var(--selection);
+  border-color: var(--selection);
+}
+
+.optionsDiv .sgdb-area .sgdb-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .optionsDiv .import-twitch {
   display: grid;
   grid-gap: 8px;
@@ -360,29 +457,35 @@ body .fast-follow-message {
   border: 1px solid var(--import-border);
   border-radius: 8px;
 }
+
 .optionsDiv .import-twitch .imports-inputs {
   display: grid;
   grid-auto-flow: row;
   grid-gap: 8px;
 }
+
 .optionsDiv .import-twitch .imports-inputs .batch-import-failed {
   display: flex;
   justify-content: center;
 }
+
 .optionsDiv .import-twitch .imports-inputs input {
   display: flex;
   width: 80%;
   justify-self: center;
 }
+
 .optionsDiv .import-twitch .imports-inputs i {
   display: flex;
   justify-content: center;
 }
+
 .optionsDiv .import-twitch .imports-inputs input::placeholder {
   font-style: italic;
   color: black;
 }
-.optionsDiv .import-twitch .imports-inputs button{
+
+.optionsDiv .import-twitch .imports-inputs button {
   justify-self: center;
   height: 35px;
   width: 150px;
@@ -391,9 +494,11 @@ body .fast-follow-message {
   background-color: transparent;
   color: var(--text-color);
 }
-.optionsDiv .import-twitch button:hover{
+
+.optionsDiv .import-twitch button:hover {
   color: var(--twitch);
 }
+
 .optionsDiv .import-twitch .importTwitchUser {
   display: grid;
   grid-auto-columns: min-content;
@@ -405,6 +510,7 @@ body .fast-follow-message {
   padding-top: 8px;
   border-top: 1px dashed var(--import-border);
 }
+
 .optionsDiv .import-description .text-block {
   display: flex;
   padding: 8px 0px 0px 35px;
@@ -420,17 +526,21 @@ body .fast-follow-message {
   white-space: nowrap;
   font-size: 16px;
 }
+
 .optionsDiv .unfollow-all:hover {
   color: var(--warning);
   cursor: pointer;
 }
+
 .optionsDiv .unfollow-all div {
   display: flex;
   align-self: center;
 }
+
 .optionsDiv .unfollow-all div b {
   padding: 0px 4px;
 }
+
 .optionsDiv .unfollow-all .small-text {
   font-size: 10px;
 }
@@ -445,6 +555,7 @@ body .fast-follow-message {
   white-space: nowrap;
   font-size: 16px;
 }
+
 .optionsDiv .disconnect-twitch:hover {
   color: var(--warning);
   cursor: pointer;
@@ -458,18 +569,22 @@ body .fast-follow-message {
   white-space: nowrap;
   padding-top: 16px;
 }
+
 .optionsDiv .export-import div:hover {
   cursor: pointer;
   color: var(--selection);
 }
+
 .optionsDiv .export-import i {
   padding-right: 8px;
 }
+
 .optionsDiv .export-import .export {
   display: flex;
   align-content: center;
   justify-content: center;
 }
+
 .optionsDiv .export-import .import {
   display: flex;
   align-content: center;
@@ -480,15 +595,18 @@ body .fast-follow-message {
   display: flex;
   flex-direction: column;
 }
+
 .optionsDiv .text-box .instructions {
   display: flex;
   justify-content: center;
   padding: 16px 0px;
 }
+
 .optionsDiv .text-box textarea {
   height: 150px;
   width: 100%;
 }
+
 .optionsDiv .import-div {
   display: grid;
   grid-auto-flow: column;
@@ -498,6 +616,7 @@ body .fast-follow-message {
   justify-content: center;
   text-decoration: none;
 }
+
 .optionsDiv .import-div i:hover {
   cursor: pointer;
   color: var(--accept);
@@ -509,7 +628,7 @@ body .fast-follow-message {
   justify-content: center;
 }
 
-footer{
+footer {
   border-top: none;
   padding: 0px 8px 8px;
   color: var(--import-border);
@@ -517,6 +636,7 @@ footer{
   clear: both;
   text-align: center;
 }
+
 footer .donate {
   color: var(--donate-link);
 }

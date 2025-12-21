@@ -9,7 +9,7 @@
 
 	"name": "NowStreaming - Twitch",
 	"description": "Manage your favorite Twitch streamers, get instant notifications when they come online, and much more!",
-	"version": "3.5",
+	"version": "3.6",
 	"author": "Jota",
 
 	"background": {
@@ -36,6 +36,7 @@
 		"identity",
 		"https://api.twitch.tv/*",
 		"https://id.twitch.tv/*",
-		"https://*.jtvnw.net/*"
+		"https://*.jtvnw.net/*",
+		"https://www.steamgriddb.com/*"
 	]
 }
