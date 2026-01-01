@@ -234,10 +234,11 @@ function updateTable() {
 		// This one we want to sort
 		streamers = streamersArray;
 
-		browser.storage.local.get({ iconCache: {}, sgdb_key: '' }, async function (cacheResult) {
+		browser.storage.local.get({ iconCache: {}, sgdb_key: '' }, function (cacheResult) {
 			var iconCache = cacheResult.iconCache;
 			var sgdbKey = cacheResult.sgdb_key;
 			var cacheUpdated = false;
+			var iconPromises = [];
 
 			for (var key in streamers) {
 				if (streamers[key][1]["flag"]) {
@@ -245,19 +246,23 @@ function updateTable() {
 					$("#streamersTableDiv").show();
 					$("#streamersTable").show();
 
-					let gameName = streamers[key][1]["game"];
-					let iconUrl = await getGameIcon(gameName, iconCache, sgdbKey);
-					if (iconUrl !== iconCache[gameName]) {
-						iconCache[gameName] = iconUrl;
-						cacheUpdated = true;
-					}
-
 					var rowClass = (nstreams % 2 == 0) ? "table-even" : "table-odd";
 					var streamerName = sanitize(streamers[key][0]);
 					var streamTitle = sanitize(streamers[key][1]["title"]);
 					var streamUrl = sanitize(streamers[key][1]["url"], defaultpage + key);
 					var viewers = streamers[key][1]["viewers"];
 					var uptime = getUptime(streamers[key][1]["created_at"]);
+					var gameName = streamers[key][1]["game"];
+					var safeStreamerId = streamerName.replace(/[^a-zA-Z0-9]/g, '');
+					var gameIconId = "game-icon-" + safeStreamerId;
+
+					var initialIcon = "icon.png";
+					if (iconCache[gameName]) {
+						initialIcon = iconCache[gameName];
+					} else {
+						var local = loadIcon(gameName);
+						if (local !== "icon.png") initialIcon = local;
+					}
 
 					$("#streamersTable").append(
 						`<tr class="list-row ${rowClass}" id="row${streamerName}">
@@ -270,16 +275,33 @@ function updateTable() {
 									</div>
 								</div>
 							</td>
-							<td><img src="${iconUrl}" title="${sanitize(gameName)}" class="masterTooltip" width="30" height="30" style="border-radius: 4px;"/></td>
+							<td><img src="${initialIcon}" id="${gameIconId}" title="${sanitize(gameName)}" class="masterTooltip" width="30" height="30" style="border-radius: 4px;"/></td>
 							<td><span class="viewersclass">${viewers}</span></td>
 							<td nowrap><span class="uptimeclass">${uptime}</span></td>
 						</tr>`
 					);
-				}
-			}
 
-			if (cacheUpdated) {
-				browser.storage.local.set({ iconCache: iconCache });
+					(function (gName, imgId) {
+						iconPromises.push(
+							getGameIcon(gName, iconCache, sgdbKey).then(function (url) {
+								if (url && url !== "icon.png" && url !== initialIcon) {
+									var img = document.getElementById(imgId);
+									if (img) img.src = url;
+
+									if (iconCache[gName] !== url) {
+										iconCache[gName] = url;
+										cacheUpdated = true;
+									}
+								} else if (url && url !== "icon.png" && !iconCache[gName]) {
+									if (iconCache[gName] !== url) {
+										iconCache[gName] = url;
+										cacheUpdated = true;
+									}
+								}
+							})
+						);
+					})(gameName, gameIconId);
+				}
 			}
 
 			$("#streamersTable").append("</tbody>");
@@ -299,6 +321,12 @@ function updateTable() {
 			if (nstreams > 0) {
 				$("#streamersDiv").show();
 			}
+
+			Promise.allSettled(iconPromises).then(function () {
+				if (cacheUpdated) {
+					browser.storage.local.set({ iconCache: iconCache });
+				}
+			});
 		});
 
 		browser.tabs.query({ active: true, currentWindow: true }, function (arrayOfTabs) {
